@@ -1,0 +1,24 @@
+{
+  "title": "Guardians of Gaia",
+  "default_introduction": "Welcome, brave adventurers, to the world of Gaia — a land where knowledge is the greatest power. You have been called together by the ancient Order of Scholars to investigate a great mystery threatening the realm. Only by combining your wits, courage, and understanding of the natural world can you hope to succeed. Your journey begins now...",
+  "default_goals": [
+    "Explore the mysterious Ashwood Forest",
+    "Discover the source of the spreading blight",
+    "Use your knowledge to restore balance to Gaia",
+    "Complete the Scholar's Worksheet of Knowledge"
+  ],
+  "starting_scene": "You stand at the edge of the Ashwood Forest. A strange purple mist clings to the ancient trees. Local villagers speak of plants withering overnight, animals fleeing, and strange crystals growing where flowers once bloomed. The village elder has asked for your help.",
+  "story_bible_template": {
+    "world_name": "Gaia",
+    "current_location": "Ashwood Forest Edge",
+    "time_of_day": "Dawn",
+    "weather": "Misty",
+    "tone": "Mysterious, educational, adventurous",
+    "established_facts": [],
+    "npc_registry": [],
+    "object_registry": [],
+    "player_actions_log": [],
+    "science_topics_covered": [],
+    "completed_goals": []
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "title": "Guardians of Gaia — Game Rules Bible",
+  "version": "1.0",
+  "core_rules": {
+    "ability_checks": {
+      "description": "When a player attempts an uncertain action, roll a d20. Add any relevant modifier.",
+      "dc_table": {
+        "Very Easy": 5,
+        "Easy": 10,
+        "Medium": 15,
+        "Hard": 20,
+        "Very Hard": 25
+      },
+      "modifiers": {
+        "Strength": "Physical tasks, lifting, breaking",
+        "Dexterity": "Speed, sneaking, catching",
+        "Intelligence": "Recall, puzzle solving, science knowledge",
+        "Wisdom": "Perception, intuition, nature",
+        "Charisma": "Persuasion, deception, performance"
+      }
+    },
+    "combat": {
+      "initiative": "Each combatant rolls d20 + Dexterity modifier; highest goes first",
+      "attack_roll": "Roll d20 + attack modifier vs. target's Armor Class (AC)",
+      "damage": "On hit, roll weapon damage dice (e.g. d6 for sword, d4 for dagger)",
+      "death": "Player falls unconscious at 0 HP; stabilized by DC 10 Medicine check"
+    },
+    "hit_points": {
+      "starting_hp": 10,
+      "healing": "Short rest: roll HD. Long rest: regain all HP",
+      "temporary_hp": "Temporary HP is lost first, does not stack"
+    },
+    "actions": {
+      "per_turn": ["Action", "Bonus Action", "Reaction", "Movement"],
+      "common_actions": ["Attack", "Dash", "Disengage", "Dodge", "Help", "Hide", "Ready", "Search", "Use Object"],
+      "improvised_action": "The Dungeon Master may allow any creative action with an appropriate ability check"
+    },
+    "magic": {
+      "description": "Spells cost spell slots. Cantrips are free and unlimited.",
+      "concentration": "Some spells require concentration. Taking damage requires DC 10 or half damage Constitution save.",
+      "spell_attack": "Roll d20 + spellcasting modifier vs. target AC or target rolls saving throw"
+    },
+    "exploration": {
+      "movement": "Standard movement is 30 feet per turn",
+      "perception": "Passive Perception = 10 + Wisdom modifier. Active search uses Action",
+      "traps_and_secrets": "DC set by GM, revealed by successful Perception or Investigation check"
+    },
+    "social": {
+      "persuasion": "Charisma (Persuasion) vs. NPC's passive Insight",
+      "deception": "Charisma (Deception) vs. NPC's Wisdom (Insight)",
+      "intimidation": "Charisma (Intimidation) vs. NPC's Wisdom saving throw"
+    },
+    "resting": {
+      "short_rest": "1 hour; spend Hit Dice to recover HP",
+      "long_rest": "8 hours; regain all HP, spell slots, and class features"
+    }
+  },
+  "character_classes": [
+    { "name": "Warrior", "description": "Master of arms and combat", "hit_die": "d10", "primary_stat": "Strength" },
+    { "name": "Scholar", "description": "Wielder of knowledge and magic", "hit_die": "d6", "primary_stat": "Intelligence" },
+    { "name": "Ranger", "description": "Expert tracker and nature guide", "hit_die": "d8", "primary_stat": "Wisdom" },
+    { "name": "Bard", "description": "Charismatic performer and healer", "hit_die": "d8", "primary_stat": "Charisma" }
+  ],
+  "alignment": ["Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "True Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil"],
+  "conditions": {
+    "Blinded": "Can't see; attacks against have advantage; attacks made are at disadvantage",
+    "Charmed": "Can't attack the charmer; charmer has advantage on social checks",
+    "Frightened": "Disadvantage on ability checks and attacks while source is visible",
+    "Paralyzed": "Incapacitated; auto-fail Str/Dex saves; attacks from adjacent have crit advantage",
+    "Poisoned": "Disadvantage on attack rolls and ability checks",
+    "Stunned": "Incapacitated; fails Str/Dex saves; attacks against have advantage"
+  },
+  "special_rules_for_science_sessions": {
+    "knowledge_bonus": "Players who correctly answer a science question gain +2 to their next roll",
+    "eureka_moment": "On a natural 20 on an Intelligence check, gain a free Eureka Token usable to auto-pass one science challenge",
+    "collaborative_discovery": "When all players agree on a science answer, the party gains Inspiration"
+  }
+}

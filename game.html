@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guardians of Gaia — Adventure</title>
+  <meta name="description" content="Collaborative D&D educational adventure — Guardians of Gaia." />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/game.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+  <canvas id="particle-canvas"></canvas>
+
+  <div class="game-page">
+
+    <!-- ─── Header ──────────────────────────────── -->
+    <div class="game-header">
+      <span class="game-title">⚔ Guardians of Gaia</span>
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="badge badge-gold" id="session-badge">Session Active</span>
+        <button class="btn btn-ghost" style="font-size:0.8rem;padding:6px 14px" onclick="confirmExit()">Exit ✕</button>
+      </div>
+    </div>
+
+    <!-- ─── Main Layout ──────────────────────────── -->
+    <div class="game-layout">
+
+      <!-- Sidebar -->
+      <aside class="game-sidebar">
+
+        <!-- Players -->
+        <div class="sidebar-section">
+          <div class="sidebar-label">⚔ Party</div>
+          <div class="sidebar-players" id="sidebar-players">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Goals -->
+        <div class="goals-section">
+          <div class="sidebar-label" style="margin-bottom:10px">🎯 Quest Goals</div>
+          <div id="goals-list">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <!-- Timer -->
+        <div class="timer-section">
+          <div class="timer-label">Time Remaining</div>
+          <div class="timer-display" id="timer-display">10:00</div>
+          <div class="timer-bar">
+            <div class="timer-bar-fill" id="timer-bar-fill" style="width:100%"></div>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- Chat Area -->
+      <div class="chat-area">
+        <div class="chat-messages" id="chat-messages">
+          <!-- Messages added by JS -->
+        </div>
+
+        <!-- Input Bar -->
+        <div class="chat-input-bar">
+          <select class="speaker-select" id="speaker-select">
+            <!-- Player options added by JS -->
+          </select>
+          <input type="text" id="chat-input" placeholder="What do you do…" maxlength="500"
+                 onkeydown="handleInputKey(event)" />
+          <button class="mic-btn" id="mute-btn" title="Toggle Text-to-Speech" 
+                  onclick="toggleMute()">🔊</button>
+          <button class="mic-btn" id="mic-btn" title="Toggle mic" 
+                  onclick="toggleVoice()">🎤</button>
+          <button class="send-btn" id="send-btn" onclick="sendMessage()" title="Send">➤</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="toast-container"></div>
+
+  <script src="js/app.js"></script>
+  <script src="js/tools.js"></script>
+  <script src="js/agents.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

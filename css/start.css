@@ -1,0 +1,259 @@
+/* ═══════════════════════════════════════════════════════════
+   start.css — Start / Lobby Page Styles
+   Guardians of Gaia
+═══════════════════════════════════════════════════════════ */
+
+/* ─── Page Layout ────────────────────────────────────────── */
+.start-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.start-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 0;
+  flex: 1;
+  height: calc(100vh - 57px);
+}
+
+/* ─── Left Sidebar ───────────────────────────────────────── */
+.start-sidebar {
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  gap: 16px;
+  overflow-y: auto;
+}
+
+.sidebar-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+/* ─── Player Slots ───────────────────────────────────────── */
+.players-section { flex: 1; }
+
+.player-slot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--bg-input);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+}
+
+.player-slot:hover { border-color: var(--border-purple); }
+
+.player-slot.filled { border-color: var(--border-active); background: rgba(201,150,58,0.05); }
+
+.player-slot.ready { border-color: var(--green); background: rgba(74,173,122,0.08); }
+
+.player-slot-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.player-slot-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.player-slot-status {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+.ready-indicator {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  flex-shrink: 0;
+}
+.ready-indicator.ready { background: var(--green); box-shadow: 0 0 6px var(--green); }
+
+.player-slot-empty .player-slot-name { color: var(--text-muted); font-style: italic; }
+
+.remove-player-btn {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: var(--transition);
+}
+.player-slot:hover .remove-player-btn { opacity: 1; }
+.remove-player-btn:hover { color: var(--red); }
+
+/* ─── Add Player ─────────────────────────────────────────── */
+.add-player-form {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.add-player-form input { flex: 1; padding: 8px 12px; font-size: 0.85rem; }
+.add-player-form button { padding: 8px 12px; font-size: 0.85rem; flex-shrink: 0; }
+
+/* ─── Sidebar Actions ────────────────────────────────────── */
+.sidebar-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.start-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.05em;
+}
+
+.mic-check-btn {
+  width: 100%;
+  padding: 10px;
+}
+
+/* ─── Mic Check Status ───────────────────────────────────── */
+.mic-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding: 6px 0;
+}
+.mic-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+.mic-dot.active { background: var(--green); animation: mic-pulse 1.5s infinite; }
+.mic-dot.error  { background: var(--red); }
+
+/* ─── Right Panel — Lesson Preview ──────────────────────── */
+.lesson-panel {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  padding: 28px 32px;
+  gap: 24px;
+}
+
+.lesson-header {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.lesson-header h1 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.lesson-header p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.lesson-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.lesson-card {
+  padding: 20px;
+}
+
+.lesson-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lesson-card-content {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* Goals numbered list */
+.goals-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.goals-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.goal-num {
+  width: 20px; height: 20px;
+  background: rgba(108,63,165,0.2);
+  border: 1px solid var(--border-purple);
+  border-radius: 50%;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--purple-light);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Intro text card */
+.intro-card {
+  grid-column: 1 / -1;
+}
+
+/* No-config notice */
+.no-config-notice {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-muted);
+}
+
+.no-config-notice .icon { font-size: 2.5rem; margin-bottom: 12px; }
+.no-config-notice p { font-size: 0.9rem; margin-bottom: 16px; }
+
+/* ─── Responsive ─────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .start-layout { grid-template-columns: 1fr; }
+  .lesson-grid { grid-template-columns: 1fr; }
+  .intro-card { grid-column: 1; }
+}

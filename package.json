@@ -1,0 +1,20 @@
+{
+  "name": "guardians-of-gaia",
+  "version": "1.0.0",
+  "description": "Collaborative D&D educational platform",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y serve .",
+    "dev": "npx -y serve .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "dnd",
+    "education",
+    "science",
+    "multiplayer",
+    "gemini"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}

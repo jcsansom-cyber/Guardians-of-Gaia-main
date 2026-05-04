@@ -1,0 +1,204 @@
+/* ═══════════════════════════════════════════════════════════
+   teacher.css — Teacher Settings Page Styles
+   Guardians of Gaia
+═══════════════════════════════════════════════════════════ */
+
+.teacher-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.teacher-main {
+  flex: 1;
+  padding: 28px 32px;
+  max-width: 860px;
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ─── Section Cards ──────────────────────────────────────── */
+.settings-card {
+  padding: 22px 24px;
+}
+
+.settings-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.settings-card-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* ─── Top row: worksheet + time inline ──────────────────── */
+.settings-top-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: start;
+}
+
+.time-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 120px;
+}
+
+.time-field input {
+  width: 120px;
+  text-align: center;
+  font-size: 1.1rem;
+  font-family: 'Cinzel', serif;
+  color: var(--gold-light);
+}
+
+/* ─── File Upload ────────────────────────────────────────── */
+.file-upload-area {
+  border: 2px dashed var(--border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  background: var(--bg-input);
+}
+
+.file-upload-area:hover, .file-upload-area.drag-over {
+  border-color: var(--purple-light);
+  background: rgba(108,63,165,0.08);
+}
+
+.file-upload-icon { font-size: 1.8rem; margin-bottom: 8px; }
+
+.file-upload-text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.file-upload-text span {
+  color: var(--purple-light);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.file-uploaded {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: rgba(74,173,122,0.1);
+  border: 1px solid rgba(74,173,122,0.3);
+  border-radius: var(--radius-md);
+  margin-top: 8px;
+}
+
+.file-uploaded-name { color: var(--green); font-size: 0.875rem; flex: 1; }
+
+/* ─── Learning Goals list ────────────────────────────────── */
+.goals-editor { display: flex; flex-direction: column; gap: 8px; }
+
+.goal-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.goal-item input { flex: 1; }
+
+.goal-remove-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 6px;
+  border-radius: 4px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+.goal-remove-btn:hover { color: var(--red); }
+
+.add-goal-btn { align-self: flex-start; margin-top: 4px; font-size: 0.8rem; }
+
+/* ─── API Key Row ────────────────────────────────────────── */
+.api-key-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.api-key-row input { flex: 1; font-family: monospace; letter-spacing: 0.05em; }
+
+/* ─── Action Bar ─────────────────────────────────────────── */
+.settings-action-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-top: 1px solid var(--border);
+  gap: 12px;
+}
+
+.settings-action-bar .save-status {
+  font-size: 0.8rem;
+  color: var(--green);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.settings-action-bar .save-status.visible { opacity: 1; }
+
+/* ─── History Modal ──────────────────────────────────────── */
+.history-log {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.history-entry {
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg-input);
+  border-left: 3px solid var(--border-purple);
+}
+
+.history-entry.ai { border-left-color: var(--purple-dim); }
+.history-entry.player { border-left-color: var(--gold-dim); }
+
+.history-sender {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.history-text { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; }
+.history-time { font-size: 0.68rem; color: var(--text-muted); margin-top: 4px; }
+
+/* ─── Regenerate button ──────────────────────────────────── */
+.regen-btn { font-size: 0.75rem; padding: 6px 12px; }
+
+@media (max-width: 600px) {
+  .teacher-main { padding: 16px; }
+  .settings-top-row { grid-template-columns: 1fr; }
+}
