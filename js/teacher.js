@@ -186,7 +186,7 @@ async function regenerateIntro() {
 
 // ─── History Modal ────────────────────────────────────────
 function showHistory() {
-  const chatLog = GoG.game.chatLog || [];
+  const chatLog = GoG.session.chatLog || GoG.game?.chatLog || [];
 
   if (chatLog.length === 0) {
     openModal('<p class="text-muted text-center" style="padding:24px">No game history yet. Start a game first!</p>', '📜 Game History');
@@ -205,6 +205,7 @@ function showHistory() {
     <div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center">
       <span class="badge badge-purple">${chatLog.length} messages</span>
       <button class="btn btn-ghost" style="font-size:0.75rem" onclick="exportHistory()">⬇ Export</button>
+      <button class="btn btn-danger" style="font-size:0.75rem" onclick="clearHistory()">🗑 Clear</button>
     </div>
     <div class="history-log">${entries}</div>
   `;
@@ -212,8 +213,15 @@ function showHistory() {
   openModal(content, '📜 Game History');
 }
 
+function clearHistory() {
+  GoG.session.chatLog = [];
+  saveSession();
+  document.querySelector('.modal-overlay')?.remove();
+  showToast('History cleared', 'gold');
+}
+
 function exportHistory() {
-  const chatLog = GoG.game.chatLog || [];
+  const chatLog = GoG.session.chatLog || GoG.game?.chatLog || [];
   const text = chatLog.map(m => `[${m.timestamp ? new Date(m.timestamp).toLocaleTimeString() : ''}] ${m.sender}: ${m.text}`).join('\n');
   const blob = new Blob([text], { type: 'text/plain' });
   const url = URL.createObjectURL(blob);

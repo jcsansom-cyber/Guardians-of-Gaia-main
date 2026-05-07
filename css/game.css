@@ -371,6 +371,13 @@
   width: 120px;
   cursor: pointer;
   outline: none;
+  transition: var(--transition);
+}
+
+.speaker-select:hover {
+  border-color: var(--purple-light);
+  background: rgba(108, 63, 165, 0.1);
+  box-shadow: 0 0 0 2px rgba(108, 63, 165, 0.15);
 }
 
 /* ─── Responsive ─────────────────────────────────────────── */

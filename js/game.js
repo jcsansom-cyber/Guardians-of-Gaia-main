@@ -115,9 +115,11 @@ function updateTimerUI() {
 
   if (status.remaining <= 0) {
     clearInterval(GoG.game.timerInterval);
-    addSystemMessage('⏰ Time is up! The adventure concludes…');
-    document.getElementById('send-btn').disabled = true;
-    document.getElementById('mic-btn').disabled = true;
+    if (!GoG.game.isGameOver) {
+      addSystemMessage('⏰ Time is up! The adventure concludes…');
+      GoG.game.isGameOver = true;
+    }
+    setInputsDisabled(true);
   }
 }
 
@@ -277,8 +279,10 @@ async function sendMessage() {
     addSystemMessage('⚠ Something went wrong. Check your Ollama model and make sure Ollama is running, then try again.');
   } finally {
     GoG.game.isProcessing = false;
-    setInputsDisabled(false);
-    document.getElementById('chat-input')?.focus();
+    if (!GoG.game.isGameOver) {
+      setInputsDisabled(false);
+      document.getElementById('chat-input')?.focus();
+    }
   }
 }
 
@@ -535,8 +539,13 @@ function exitGame() {
 // ─── Chat Log ─────────────────────────────────────────────
 function logMessage(sender, text, type = 'ai') {
   if (!GoG.game.chatLog) GoG.game.chatLog = [];
-  GoG.game.chatLog.push({ sender, text, type, timestamp: new Date().toISOString() });
+  const entry = { sender, text, type, timestamp: new Date().toISOString() };
+  GoG.game.chatLog.push(entry);
   saveGameState();
+
+  if (!GoG.session.chatLog) GoG.session.chatLog = [];
+  GoG.session.chatLog.push(entry);
+  saveSession();
 }
 
 // ─── Utility ──────────────────────────────────────────────

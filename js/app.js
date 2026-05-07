@@ -15,7 +15,8 @@ window.GoG = {
     extraNotes: '',
     timeLimitSeconds: 600,
     storyIntro: '',
-    gameGoals: []
+    gameGoals: [],
+    chatLog: []
   },
 
   // Game runtime state

@@ -109,10 +109,10 @@ function renderPlayerList() {
 function updateStartButton() {
   const btn = document.getElementById('start-btn');
   if (!btn) return;
-  const hasReady = GoG.game.players.some(p => p.ready);
+  const allReady = GoG.game.players.every(p => p.ready);
   const hasPlayers = GoG.game.players.length > 0;
-  btn.disabled = !(hasPlayers && hasReady);
-  console.log(`[StartPage] Button update: players=${GoG.game.players.length}, ready=${hasReady} -> disabled=${btn.disabled}`);
+  btn.disabled = !(hasPlayers && allReady);
+  console.log(`[StartPage] Button update: players=${GoG.game.players.length}, ready=${allReady} -> disabled=${btn.disabled}`);
 }
 
 // ─── Lesson Panel ─────────────────────────────────────────
@@ -248,8 +248,8 @@ async function startGame() {
   if (activeMicCheck) { try { activeMicCheck.stop(); } catch(e){} }
 
   const readyPlayers = GoG.game.players.filter(p => p.ready);
-  if (readyPlayers.length === 0) {
-    showToast('At least one player must be ready!', 'red');
+  if (readyPlayers.length !== GoG.game.players.length) {
+    showToast('All players must be ready to start!', 'red');
     return;
   }
 
